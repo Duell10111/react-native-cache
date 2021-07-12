@@ -11,6 +11,11 @@ export interface ICachePolicy {
     stdTTL: number; // second
 }
 
+interface Entry {
+    created : number
+    value : string
+}
+
 export default class Cache {
     protected backend: any;
     protected namespace: string;
@@ -101,7 +106,7 @@ export default class Cache {
         const compositeKey = this.makeCompositeKey(key);
         const entryJsonString = await this.backend.getItem(compositeKey);
 
-        let entry;
+        let entry : Entry | undefined;
         if (entryJsonString) {
             entry = JSON.parse(entryJsonString);
         }
@@ -110,9 +115,12 @@ export default class Cache {
         if (entry) {
             value = entry.value;
             if (this.policy.stdTTL > 0) {
-                const deadline = entry.created.getTime() + this.policy.stdTTL * 1000;
+                const deadline = entry.created + this.policy.stdTTL * 1000;
                 const now = Date.now();
                 if (deadline < now) {
+                    if(this.prunecallback) {
+                        this.prunecallback([key])
+                    }
                     this.remove(key);
                     value = undefined;
                 }
@@ -130,8 +138,8 @@ export default class Cache {
     }
 
     public async set(key: string, value: string): Promise<void> {
-        const entry = {
-            created: new Date(),
+        const entry : Entry = {
+            created: Date.now(),
             value
         };
 

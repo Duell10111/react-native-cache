@@ -10,6 +10,10 @@ const cache = new Cache({
     backend: MemoryStore
 });
 
+function Sleep(milliseconds : number) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
+}
+
 describe("cache", () => {
     it("can set and get entry", async () => {
         await cache.set("key1", "value1");
@@ -75,4 +79,24 @@ describe("cache", () => {
 
         expect(Object.keys(entries).length).toBe(0);
     });
+
+    it("can get notified when element got deleted", async () => {
+        let lastprunekeys : string[] = []
+        const testCache = new Cache({
+            backend: MemoryStore,
+            namespace: "ntest",
+            policy: {
+                maxEntries: 1,
+                stdTTL: 1,
+            },
+            prunecallback: (keys) => lastprunekeys = keys
+        })
+        await testCache.set("key", "value")
+        const value = await testCache.peek("key")
+
+        expect(value).toBe("value")
+        await Sleep(1000)
+        expect(await testCache.peek("key")).toBeUndefined()
+        expect(lastprunekeys[0]).toBe("key")
+    })
 });
