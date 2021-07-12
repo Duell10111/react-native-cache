@@ -1,13 +1,17 @@
-# react-native-cache
+# @duell10111/react-native-cache
 
 LRU cache built on top of the [React Native communities' AsyncStorage v2](https://github.com/react-native-community/async-storage/tree/master) (or included MemoryStore) and automatic pruning of least recently used items.
+
+Based on timfpark's version
 
 ## Installation
 
 *   Run the following command.
 
 ```shell
-npm install --save react-native-cache
+npm install --save @duell10111/react-native-cache
+or
+yarn add @duell10111/react-native-cache
 ```
 
 *   Import the library.
@@ -27,7 +31,8 @@ const cache = new Cache({
         maxEntries: 50000, // if unspecified, it can have unlimited entries
         stdTTL: 0 // the standard ttl as number in seconds, default: 0 (unlimited)
     },
-    backend: AsyncStorage
+    backend: AsyncStorage,
+    prunecallback: (keys) => {console.log(keys)} //prunecallback called if a key gets removed
 });
 ```
 
