@@ -17,7 +17,7 @@ yarn add @duell10111/react-native-cache
 *   Import the library.
 
 ```javascript
-import { Cache } from "react-native-cache";
+import { Cache } from "@duell10111/react-native-cache";
 ```
 
 ## Usage
