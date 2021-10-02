@@ -1,6 +1,6 @@
 {
     "name": "@duell10111/react-native-cache",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "description": "LRU cache built on AsyncStorage for react-native",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
