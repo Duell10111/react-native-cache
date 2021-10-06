@@ -2,7 +2,9 @@
 
 LRU cache built on top of the [React Native communities' AsyncStorage v2](https://github.com/react-native-community/async-storage/tree/master) (or included MemoryStore) and automatic pruning of least recently used items.
 
-Based on timfpark's version
+Based on timfpark's version.
+
+Additionally a sync version is included to use it on top of the [React Native MMKV](https://github.com/mrousavy/react-native-mmkv) package.
 
 ## Installation
 
@@ -17,7 +19,11 @@ yarn add @duell10111/react-native-cache
 *   Import the library.
 
 ```javascript
-import { Cache } from "@duell10111/react-native-cache";
+import { Cache } from "@duell10111/react-native-cache"; //Async version
+```
+
+```javascript
+import { SyncCache } from "@duell10111/react-native-cache"; //Sync version
 ```
 
 ## Usage
