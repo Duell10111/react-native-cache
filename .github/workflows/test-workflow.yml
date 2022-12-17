@@ -1,7 +1,7 @@
-name: learn-github-actions
+name: Run Tests
 on: [push]
 jobs:
-  check-bats-version:
+  run-tests:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
