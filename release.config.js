@@ -5,7 +5,7 @@ module.exports = {
         "main",
         "github-actions" // For testing
     ],
-    "tagFormat": "${version}",
+    "tagFormat": "v.${version}",
     // https://semantic-release.gitbook.io/semantic-release/extending/plugins-list
     "plugins": [
         [
