@@ -7,7 +7,6 @@
     "scripts": {
         "build": "tsc",
         "lint": "eslint . --ext .ts --fix",
-        "prepublish": "yarn test",
         "test": "yarn run build && jest --coverage"
     },
     "repository": {
