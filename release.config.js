@@ -150,11 +150,10 @@ module.exports = {
             }
         ],
         "@semantic-release/github",
-        ["@semantic-release/npm", {
-            "npmPublish": false,
-        }],
+        "@semantic-release/changelog",
+        "@semantic-release/npm",
         ["@semantic-release/git", {
-            "assets": ["package.json"]
+            "assets": ["package.json", "CHANGELOG.md"]
         }]
     ]
 }
