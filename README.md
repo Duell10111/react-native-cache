@@ -1,6 +1,7 @@
 # @duell10111/react-native-cache
 
 [![npm version](https://badge.fury.io/js/@duell10111%2Freact-native-cache.svg)](https://badge.fury.io/js/@duell10111%2Freact-native-cache)
+[![Tests](https://github.com/Duell10111/react-native-cache/actions/workflows/test-workflow.yml/badge.svg)](https://github.com/Duell10111/react-native-cache/actions/workflows/test-workflow.yml)
 
 LRU cache built on top of the [React Native communities' AsyncStorage v2](https://github.com/react-native-community/async-storage/tree/master) (or included MemoryStore) and automatic pruning of least recently used items.
 
