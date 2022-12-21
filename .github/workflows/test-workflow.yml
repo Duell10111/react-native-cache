@@ -9,5 +9,9 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
-      - run: yarn install
+          node-version: '18'
+          cache: 'yarn'
+      - name: Install dependencies
+        run: npm install -g yarn && yarn install
+      - name: Start Tests
+        run: yarn test
