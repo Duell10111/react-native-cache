@@ -73,6 +73,11 @@ describe("cache", () => {
     });
 
     it("can clear all elements", () => {
+        cache.set("key1", "value1");
+        const value = cache.get("key1");
+
+        expect(value).toBe("value1");
+
         cache.clearAll();
 
         const entries = cache.getAll();
